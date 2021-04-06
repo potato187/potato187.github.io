@@ -1,0 +1,10 @@
+@use '../abstract' as *;
+
+@include import-font("Poppins", "/restaurant-luxury/fonts/poppins/poppins-700", bold);
+@include import-font("Poppins", "/restaurant-luxury/fonts/poppins/poppins-700italic", bold, italic);
+
+@include import-font("Poppins", "/restaurant-luxury/fonts/poppins/poppins-regular", normal);
+@include import-font("Poppins", "/restaurant-luxury/fonts/poppins/poppins-italic", normal, italic);
+
+@include import-font("Poppins", "/restaurant-luxury/fonts/poppins/poppins-500", 500);
+@include import-font("Poppins", "/restaurant-luxury/fonts/poppins/poppins-500italic", 500, italic);

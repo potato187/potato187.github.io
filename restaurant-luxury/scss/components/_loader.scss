@@ -1,0 +1,48 @@
+@use '../abstract' as *;
+
+#loader {
+  @include Position(fixed, 0, 0, 0, 0, 1000);
+  background-color: var(--black);
+}
+
+.rec {
+  @include Position(absolute, 50%, 50%, 0, 0);
+  @include size(10rem, 10rem);
+  @include transform(translate(-50%, -50%));
+  overflow: hidden;
+}
+
+.center {
+  @include absolute-center();
+}
+.top,
+.bottom {
+  height: var(--w-border);
+  background-color: var(--white);
+}
+
+.left,
+.right {
+  width: var(--w-border);
+  background-color: var(--white);
+}
+
+.top {
+  @include Position(absolute, 0, 0, 0, null);
+  @include animate(left-right 0.6s infinite both);
+}
+
+.bottom {
+  @include Position(absolute, null, 0, 0, 0);
+  @include animate(right-left 0.6s 0.6s infinite both);
+}
+
+.right {
+  @include Position(absolute, 0, null, 0, 0);
+  @include animate(top-bottom 0.6s 0.1s infinite both);
+}
+
+.left {
+  @include Position(absolute, 0, 0, null, 0);
+  @include animate(bottom-top 0.6s 0.9s infinite both);
+}

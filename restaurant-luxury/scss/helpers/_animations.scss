@@ -1,0 +1,27 @@
+@use '../abstract' as *;
+
+*[class*="am-"] {
+  opacity: 0;
+}
+.am-fade-in.appear {
+  @include animate(fade-in 500ms ease-in-out 1 forwards);
+  -webkit-animation-delay: 100ms;
+  animation-delay: 100ms;
+}
+
+.am-fade-in-down.appear {
+  @include animate(fade-in-down 750ms ease-in-out 1 forwards);
+}
+.am-fade-in-up.appear {
+  @include animate(fade-in-up 750ms ease-in-out 1 forwards);
+}
+.am-fade-in-right.appear {
+  @include animate(fade-in-right 750ms ease-in-out 1 forwards);
+}
+.am-fade-in-left.appear {
+  @include animate(fade-in-left 750ms ease-in-out 1 forwards);
+}
+
+.am-scale {
+  @include animate(scale 2.5s var(--cubic-bezier) 1 forwards);
+}

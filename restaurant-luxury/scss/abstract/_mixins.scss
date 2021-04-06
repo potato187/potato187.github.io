@@ -1,0 +1,335 @@
+@use './funcs' as *;
+
+@mixin modifier($map, $attribute, $prefix: "-") {
+  @if type-of(map) == "map" {
+    @each $key, $value in $map {
+      &#{$prefix}#{"" + $key} {
+        #{$attribute}: #{$value};
+      }
+    }
+  } @else {
+    @each $key in $map {
+      &#{$prefix}#{"" + $key} {
+        #{$attribute}: #{$key};
+      }
+    }
+  }
+}
+
+@mixin grid($columns: null, $row: null, $gap: null) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $row;
+  grid-gap: $gap;
+}
+
+@mixin grid-child($col-start, $col-end, $row-start, $row-end) {
+  grid-column: #{$col-start}/#{$col-end};
+  grid-row: #{$row-start}/#{$row-end};
+}
+
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin animate($args) {
+  -webkit-animation: $args;
+  animation: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -ms-transform: $args;
+  transform: $args;
+}
+
+@mixin transform-origin($args...) {
+  -webkit-transform-origin: $args;
+  -ms-transform-origin: $args;
+  transform-origin: $args;
+}
+
+@mixin transition-delay($time...) {
+  -webkit-transition-delay: $time;
+  -o-transition-delay: $time;
+  transition-delay: $time;
+}
+
+@mixin transition-property($args...) {
+  -webkit-transition-property: $args;
+  -o-transition-property: $args;
+  transition-property: $args;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin font(
+  $font-family: var(--font-primary),
+  $font-size: var(--text-sm),
+  $font-weight: var(--font-normal),
+  $color: var(--color-text),
+  $font-style: none,
+  $text-transform: none
+) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+  text-transform: $text-transform;
+}
+
+@mixin Position($position, $top: null, $left: null, $right: null, $bottom: null, $z: null) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  z-index: $z;
+}
+
+@mixin absolute-full($z: 2) {
+  @include Position(absolute, 0, 0, 0, 0, $z);
+  width: 100%;
+  height: 100%;
+}
+
+@mixin absolute-center() {
+  @include Position(absolute, 50%, 50%);
+  @include transform(translate(-50%, -50%));
+}
+
+@mixin inline-flex($direction: row) {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex-order($args...) {
+  -webkit-box-flex: $args;
+  -ms-flex: $args;
+  flex: $args;
+}
+
+@mixin flex($justify: flex-start, $align: stretch, $direction: row, $wrap: nowrap) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+}
+
+@mixin for-size($min: null, $max: null) {
+  $breakpoints: (
+    xs: 480px,
+    sm: 768px,
+    md: 960px,
+    lg: 1024px,
+    xl: 1248px,
+  );
+
+  @if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+    $min-range: map-get($breakpoints, $min);
+    $max-range: map-get($breakpoints, $max);
+
+    @media (min-width: $min-range) and (max-width: #{$max-range - 1}) {
+      @content;
+    }
+  } @else if map-has-key($breakpoints, $min) {
+    $min-range: map-get($breakpoints, $min);
+    @media (min-width: $min-range) {
+      @content;
+    }
+  } @else {
+    $max-range: map-get($breakpoints, $max);
+
+    @media (max-width: #{$max-range - 1}) {
+      @content;
+    }
+  }
+}
+
+@mixin hidden() {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin visible($opacity: 1) {
+  visibility: visible;
+  opacity: $opacity;
+}
+
+@mixin import-font($font-name, $path, $weight: normal, $style: normal, $display: fallback) {
+  @font-face {
+    font-family: $font-name;
+    src: url($path + ".woff") format("woff"), url($path + ".woff2") format("woff2");
+    font-weight: $weight;
+    font-style: $style;
+    font-display: $display;
+  }
+}
+
+@mixin truncate() {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin background($size: cover, $position: center, $repeat: no-repeat) {
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+@mixin box-shadow($args...) {
+  -webkit-box-shadow: $args;
+  box-shadow: $args;
+}
+
+@mixin use-select($option) {
+  -webkit-user-select: $option;
+  -moz-user-select: $option;
+  -ms-user-select: $option;
+  user-select: $option;
+}
+
+@mixin linear-gradient($direction, $color-stops...) {
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+  background-color: nth((nth($color-stops, 1)), 1);
+  background: -webkit-gradient(linear, left top, left bottom, from($direction), to($color-stops));
+  background: -o-linear-gradient($direction, $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@mixin media-portrait() {
+  position: relative;
+  height: 100%;
+  > img {
+    @include absolute-full();
+  }
+}
+@mixin media-ratio($x, $y) {
+  padding-top: $y / $x * 100%;
+}
+@mixin media-landscape($x, $y) {
+  position: relative;
+  height: 0;
+  @include media-ratio($x, $y);
+
+  > img {
+    @include absolute-full();
+  }
+}
+
+@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+  -webkit-box-shadow: inset 0 0 0 $width $color;
+  box-shadow: inset 0 0 0 $width $color;
+  color: $color;
+  -webkit-transition: color $duration $duration/3;
+  -o-transition: color $duration $duration/3;
+  transition: color $duration $duration/3;
+  position: relative;
+
+  &::before,
+  &::after {
+    border: 0 solid transparent;
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    @include size(0, 0);
+
+    #{$vertical}: 0;
+    #{$horizontal}: 0;
+  }
+
+  &::before {
+    $h-side: if($horizontal == "left", "right", "left");
+
+    border-#{$vertical}-width: $width;
+    border-#{$h-side}-width: $width;
+  }
+
+  &::after {
+    $v-side: if($vertical == "top", "bottom", "top");
+
+    border-#{$v-side}-width: $width;
+    border-#{$horizontal}-width: $width;
+  }
+
+  &:hover {
+    color: $hover;
+
+    &::before,
+    &::after {
+      border-color: $hover;
+      @include transition(border-color 0s, width $duration, height $duration);
+      @include size(100%, 100%);
+    }
+
+    &::before {
+      @include transition-delay(0s, 0s, $duration);
+    }
+
+    &::after {
+      @include transition-delay(0s, $duration, 0s);
+    }
+  }
+}
+
+@mixin clipPath($args...) {
+  -webkit-clip-path: $args;
+  clip-path: $args;
+}
+
+@mixin truncate-multiline($lines, $font-size, $line-height) {
+  position: relative;
+  overflow: hidden;
+  display: block;
+
+  width: 100%;
+  height: calc(#{$font-size} * #{$line-height} * #{$lines});
+  font-size: $font-size;
+  line-height: $line-height;
+
+  &::after {
+    content: "";
+    @include Position(absolute, null, null, 0, 0, 2);
+    width: 37.5%;
+    height: calc(#{$font-size} * #{$line-height});
+  }
+}

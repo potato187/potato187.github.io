@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body.disable {
+  overflow: hidden;
+}
+
+:focus {
+  outline: none;
+}
+
+.none-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+a {
+  font-size: inherit;
+  color: currentColor;
+  text-decoration: none;
+}
+
+input,
+input::placeholder {
+  font-size: inherit;
+  font-family: inherit;
+  color: currentColor;
+}

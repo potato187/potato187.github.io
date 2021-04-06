@@ -1,0 +1,77 @@
+@use '../abstract' as *;
+
+button,
+input,
+input::placeholder {
+  font-family: var(--font-primary);
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.form {
+  position: relative;
+
+  &-input {
+    padding: var(--space-sm) var(--space-lg) var(--space-sm) 0;
+    width: 100%;
+    font-size: var(--text-md);
+    @include truncate();
+    &::placeholder {
+      font-weight: var(--font-bold);
+    }
+
+    &-large {
+      font-size: var(--text-md-pro);
+      @include for-size(null, sm) {
+        font-size: var(--text-md);
+      }
+    }
+  }
+
+  &-submit {
+    cursor: pointer;
+    height: 100%;
+    color: var(--secondary-color);
+
+    @include Position(absolute, 50%, null, 0, null, 2);
+    @include transform(translateY(-50%));
+    @include flex(center, center);
+
+    > .icon {
+      @include transform(rotate(45deg));
+      &.none-rotate {
+        @include transform(rotate(0deg));
+      }
+    }
+
+    &.black {
+      color: var(--black);
+    }
+
+    &:hover {
+      color: var(--secondary-color);
+      @include transition(color 0.2s var(--cubic-bezier));
+    }
+  }
+
+  &-group {
+    @include flex();
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid #fff;
+    position: relative;
+  }
+}
+.bb-gray {
+  border-bottom: 2px solid var(--color-border);
+}
+
+.blog-title {
+  position: relative;
+  right: -25%;
+  z-index: 100;
+
+  @include for-size(null, md) {
+    right: initial;
+  }
+}

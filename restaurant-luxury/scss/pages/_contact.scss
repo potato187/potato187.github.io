@@ -1,0 +1,41 @@
+@use '../abstract' as *;
+
+@include for-size(null, lg) {
+  .contact-title {
+    order: 2;
+  }
+  .contact-media {
+    order: 1;
+  }
+}
+
+.header-images {
+  display: flex;
+  justify-content: space-between;
+}
+.header-image {
+  max-width: calc(50% - var(--space-sm));
+  width: 100%;
+  background-color: #d6d6d6;
+  overflow: hidden;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: calc(5 / 4 * 100%);
+  }
+
+  > img {
+    @include absolute-full(1);
+  }
+
+  &:first-child {
+    @include clipPath(polygon(100% 10%, 100% 100%, 0 100%, 0 10%));
+  }
+  &:last-child {
+    @include clipPath(polygon(100% 0, 100% 90%, 0 90%, 0 0));
+  }
+}

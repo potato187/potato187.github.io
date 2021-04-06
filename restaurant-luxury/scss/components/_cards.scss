@@ -1,0 +1,115 @@
+@use '../abstract' as *;
+
+%base-card {
+  @include box-shadow(0 4px 16px rgb(215 215 215 / 50%));
+}
+.card {
+  --cubic-bezier: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --time-fast: 300ms;
+  --time-slow: 500ms;
+  @extend %base-card;
+
+  padding: var(--space-sm);
+  margin: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+  height: 50rem;
+
+  &-wrapper {
+    @include absolute-full();
+  }
+
+  &-header {
+    @include size(100%, 55%);
+  }
+
+  &-header,
+  &-main {
+    @include background();
+    @include transition(height var(--time-slow) var(--cubic-bezier));
+  }
+
+  &-main {
+    height: 45%;
+    background-color: var(--white);
+    padding: var(--space-sm) var(--space-md);
+
+    > h3 {
+      font-weight: var(--font-medium);
+    }
+
+    > p {
+      @include truncate-multiline(3, var(--text-md), var(--leading-base));
+    }
+
+    > .currency {
+      display: block;
+      width: 100%;
+      font-size: var(--text-lg);
+      font-weight: var(--font-medium);
+      color: var(--primary-color);
+      padding: var(--space-xs);
+      border-top: 1px solid rgb(0 0 0 / 10%);
+    }
+  }
+
+  &:hover &-header {
+    height: 100%;
+  }
+  &:hover &-main {
+    height: 0;
+  }
+}
+
+.person {
+  padding: var(--space-md);
+  max-width: 30rem;
+  background-color: var(--white);
+  @include box-shadow(rgb(215 215 215 / 50%) 0px 4px 16px);
+
+  overflow: hidden;
+  margin: 0 auto;
+  @include flex(center, center, column);
+  border-radius: 1px;
+  border-top-right-radius: 10px;
+  position: relative;
+
+  z-index: 1;
+
+  &-media {
+    @include size(9.6rem);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+
+    > img {
+      @include absolute-full(2);
+    }
+  }
+
+  & p {
+    padding: var(--space-sm) 0;
+  }
+
+  & h3 {
+    font-size: var(--space-md);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    @include size(9.6rem);
+    @include transform(translate(-50%, -50%));
+    border-radius: 100%;
+    background-color: #dce9ff;
+    z-index: -1;
+    @include transition(transform 0.3s);
+  }
+
+  &:hover {
+    .overlay {
+      @include transform(translate(-50%, -50%) scale(10) translateZ(0));
+    }
+  }
+}

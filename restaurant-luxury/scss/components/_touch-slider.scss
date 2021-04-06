@@ -1,0 +1,19 @@
+@use '../abstract' as *;
+.touch-slider-wrapper {
+  @include inline-flex();
+  @include transform(translateX(0));
+  @include transition(transform 0.3s ease-out);
+  overflow: hidden;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.touch-slider {
+  width: 100vw;
+  @include use-select(none);
+}
+
+.touch-slider.grabbing {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}

@@ -1,0 +1,83 @@
+@use '../abstract' as *;
+
+:root {
+  --space-unit: 1.6rem;
+  --space-xs: calc(var(--space-unit) * 0.5);
+  --space-sm: calc(var(--space-unit) * 0.75);
+  --space-md: calc(var(--space-unit) * 1.25);
+  --space-lg: calc(var(--space-unit) * 2);
+  --space-xl: calc(var(--space-unit) * 3.25);
+  --space-2xl: calc(var(--space-unit) * 5.25);
+  --space-3xl: calc(var(--space-unit) * 8.5);
+}
+
+$map-spaces: (rest, xs, sm, md, lg, xl, 2xl, 3xl);
+
+.mt {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      margin-top: var(--space-#{$value});
+    }
+  }
+}
+.mb {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      margin-bottom: var(--space-#{$value});
+    }
+  }
+
+  &-reset {
+    margin-bottom: 0;
+  }
+}
+
+.ml {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      margin-left: var(--space-#{$value});
+    }
+  }
+
+  &-auto {
+    margin-left: auto;
+  }
+}
+
+.mr {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      margin-right: var(--space-#{$value});
+    }
+  }
+}
+.pt {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      padding-top: var(--space-#{$value});
+    }
+  }
+}
+.pb {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      padding-bottom: var(--space-#{$value});
+    }
+  }
+}
+
+.pl {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      padding-left: var(--space-#{$value});
+    }
+  }
+}
+
+.pl {
+  @each $value in $map-spaces {
+    &-#{$value} {
+      padding-right: var(--space-#{$value});
+    }
+  }
+}

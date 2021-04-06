@@ -1,0 +1,47 @@
+@use '../abstract' as *;
+
+.flex {
+  @include flex();
+
+  &-center {
+    @include flex(center, center);
+  }
+
+  &-start-center {
+    @include flex(flex-start, center);
+  }
+
+  &-between-center {
+    @include flex(space-between, center);
+  }
+}
+
+.flex-column {
+  @include flex(flex-start, stretch, column);
+}
+.flex-inline-column {
+  @include inline-flex(column);
+}
+
+.self {
+  &-center {
+    align-self: center;
+  }
+}
+
+.justify {
+  &-center {
+    justify-content: center;
+  }
+}
+
+.content-under-sm-center {
+  @include for-size(null, sm) {
+    justify-content: center;
+  }
+}
+
+.place-center {
+  align-items: center;
+  justify-content: center;
+}

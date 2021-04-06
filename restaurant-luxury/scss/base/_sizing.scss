@@ -1,0 +1,23 @@
+@use '../abstract' as *;
+
+.w-90 {
+  max-width: 90%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-55 {
+  width: 55%;
+}
+
+.w-sm-100 {
+  @include for-size(null, sm) {
+    width: 100%;
+  }
+}
+
+.h-full {
+  height: 100%;
+}

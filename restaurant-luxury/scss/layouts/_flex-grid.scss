@@ -1,0 +1,43 @@
+@use '../abstract' as *;
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+$grid-columns: 12;
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    flex-basis: round-width($i, $grid-columns);
+    max-width: round-width($i, $grid-columns);
+  }
+
+  .col-xs-#{$i} {
+    @include for-size(null, xs) {
+      flex-basis: round-width($i, $grid-columns);
+      max-width: round-width($i, $grid-columns);
+    }
+  }
+
+  .col-sm-#{$i} {
+    @include for-size(xs, sm) {
+      flex-basis: round-width($i, $grid-columns);
+      max-width: round-width($i, $grid-columns);
+    }
+  }
+
+  .col-md-#{$i} {
+    @include for-size(sm, lg) {
+      flex-basis: round-width($i, $grid-columns);
+      max-width: round-width($i, $grid-columns);
+    }
+  }
+
+  .col-lg-#{$i} {
+    @include for-size(lg, null) {
+      flex-basis: round-width($i, $grid-columns);
+      max-width: round-width($i, $grid-columns);
+    }
+  }
+}

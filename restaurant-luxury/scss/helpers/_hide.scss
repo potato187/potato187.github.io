@@ -1,0 +1,35 @@
+@use '../abstract' as *;
+
+.hide-for-lg {
+  @include for-size(lg, null) {
+    display: none !important;
+  }
+}
+
+.hide-for-under-lg {
+  @include for-size(null, lg) {
+    display: none !important;
+  }
+}
+
+.hide-for-under-xs {
+  @include for-size(null, xs) {
+    display: none !important;
+  }
+}
+
+.hide-for-under-sm {
+  @include for-size(null, sm) {
+    display: none !important;
+  }
+}
+
+.visually-hide {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+}
+
+.none {
+  display: none;
+}

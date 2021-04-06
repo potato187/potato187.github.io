@@ -1,0 +1,94 @@
+@use '../abstract' as *;
+:root {
+  --header-height: 9rem;
+}
+header {
+  @include Position(fixed, 0, 0, 0, null, 999);
+  @include flex(center, center);
+
+  height: var(--header-height);
+  background-color: transparent;
+  @include transition(all, 1s);
+
+  &.fixed {
+    background-color: var(--black-50);
+  }
+}
+
+.nav-toggle {
+  @include Position(fixed, 0, 0, 0, 0, 3);
+  @include hidden();
+  overflow: hidden;
+  height: 0;
+  background-color: var(--white);
+  @include transition(750ms ease-in-out);
+  @include transition-property(height, opacity, visibility);
+  @include flex(center, stretch, column);
+}
+
+.btn-toggle {
+  @include flex(space-between, center, column);
+  @include size(2.5rem, 2rem);
+  position: relative;
+  z-index: 1000;
+  cursor: pointer;
+
+  & > span {
+    display: block;
+    @include size(100%, 3px);
+    background-color: var(--black);
+    @include transition(350ms ease-in-out);
+    @include transition-property(transform, opacity);
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    @include size(2.5rem, 2.5rem);
+    @include Position(absolute, 0, 0, 0, 0, -1);
+    @include hidden();
+    margin: 0 auto;
+    border-radius: 100%;
+    background-color: var(--black-50);
+  }
+}
+
+header.active-toggle {
+  .nav-toggle {
+    @include visible();
+    height: 100%;
+  }
+  .overlay {
+    @include visible(0.3);
+    height: 100%;
+  }
+
+  .btn-toggle {
+    &::before {
+      @include animate(fade 500ms forwards);
+    }
+
+    & > span {
+      &:first-child {
+        @include transform(translateY(9px) rotate(45deg));
+      }
+      &:nth-child(2) {
+        @include transform(translateX(-50%));
+        opacity: 0;
+      }
+      &:last-child {
+        @include transform(translateY(-9px) rotate(-45deg));
+      }
+    }
+  }
+}
+
+.logo-brand {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--white);
+
+  > span {
+    color: var(--secondary-color);
+  }
+}

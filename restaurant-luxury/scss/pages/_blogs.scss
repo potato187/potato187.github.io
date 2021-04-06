@@ -1,0 +1,65 @@
+@use '../abstract' as *;
+
+.blog {
+  @include flex(flex-start);
+  @include for-size(null, sm) {
+    @include flex(center, center, column);
+    text-align: center;
+  }
+
+  &-preview {
+    background-color: #f0f0f0;
+    height: 2px;
+    width: var(--space-md);
+
+    @include for-size(null, sm) {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    &--full {
+      width: 90%;
+    }
+  }
+  &-text {
+    @include truncate-multiline(3, var(--text-md), var(--leading-lg));
+  }
+  &-avatar {
+    position: relative;
+    display: block;
+    @include size(10rem);
+    border-radius: 50%;
+    overflow: hidden;
+
+    & img {
+      @include absolute-full(2);
+    }
+  }
+
+  &-created {
+    display: block;
+    font-size: var(--text-md);
+    margin-bottom: var(--baseline);
+  }
+
+  &.preview {
+    position: relative;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #f0f0f0;
+    }
+
+    &::before {
+      top: 0;
+    }
+    &::after {
+      bottom: 0;
+    }
+  }
+}
+

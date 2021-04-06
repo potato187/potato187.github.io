@@ -1,0 +1,135 @@
+@use 'mixins' as *;
+
+@include keyframes(storm) {
+  0% {
+    @include transform(translate3d(0, 0, 0) translateZ(0));
+  }
+  25% {
+    @include transform(translate3d(4px, 0, 0) translateZ(0));
+  }
+  50% {
+    @include transform(translate3d(-3px, 0, 0) translateZ(0));
+  }
+  75% {
+    @include transform(translate3d(2px, 0, 0) translateZ(0));
+  }
+  100% {
+    @include transform(translate3d(0, 0, 0) translateZ(0));
+  }
+}
+
+@include keyframes(rotate) {
+  0% {
+    @include transform(rotate(0) translate3d(0, 0, 0));
+  }
+  25% {
+    @include transform(rotate(3deg) translate3d(0, 0, 0));
+  }
+  50% {
+    @include transform(rotate(-3deg) translate3d(0, 0, 0));
+  }
+  75% {
+    @include transform(rotate(1deg) translate3d(0, 0, 0));
+  }
+  100% {
+    @include transform(translate3d(0, 0, 0) translateZ(0));
+  }
+}
+
+@include keyframes(fade-in) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@include keyframes(fade-in-left) {
+  0% {
+    opacity: 0;
+    @include transform(translateX(-100%));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateX(0%));
+  }
+}
+
+@include keyframes(fade-in-right) {
+  0% {
+    opacity: 0;
+    @include transform(translateX(100%));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateX(0%));
+  }
+}
+
+@include keyframes(fade-in-up) {
+  0% {
+    opacity: 0;
+    @include transform(translateY(100%));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateY(0%));
+  }
+}
+
+@include keyframes(fade-in-down) {
+  0% {
+    opacity: 0;
+    @include transform(translateY(-100%));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateY(0%));
+  }
+}
+
+@include keyframes(left-right) {
+  from {
+    @include transform(translateX(-100%));
+  }
+  to {
+    @include transform(translateX(100%));
+  }
+}
+
+@include keyframes(right-left) {
+  from {
+    @include transform(translateX(100%));
+  }
+  to {
+    @include transform(translateX(-100%));
+  }
+}
+
+@include keyframes(top-bottom) {
+  from {
+    @include transform(translateY(-100%));
+  }
+  to {
+    @include transform(translateY(100%));
+  }
+}
+@include keyframes(bottom-top) {
+  from {
+    @include transform(translateY(100%));
+  }
+  to {
+    @include transform(translateY(-100%));
+  }
+}
+
+@include keyframes(scale) {
+  from {
+    @include transform(scale(2));
+  }
+  to {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+}

@@ -1,0 +1,12 @@
+@use '../abstract' as *;
+
+.background-linear {
+  position: relative;
+
+  &::before {
+    content: "";
+    @include Position(absolute, 5%, 0, 0, 0, -1);
+    width: 100%;
+    @include linear-gradient(to right, #fff 40%, #f7f7f7 40%, #f7f7f7 100%);
+  }
+}

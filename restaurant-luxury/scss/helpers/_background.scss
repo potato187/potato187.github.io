@@ -1,0 +1,17 @@
+@use '../abstract' as *;
+
+.bg-center-cover {
+  @include background();
+}
+
+.bg-center-right {
+  @include background(cover, center right);
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.bg-black-50 {
+  background-color: var(--black-50);
+}

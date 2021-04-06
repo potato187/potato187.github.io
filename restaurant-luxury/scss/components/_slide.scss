@@ -1,0 +1,92 @@
+@use '../abstract' as *;
+
+.arrow {
+  display: inline-block;
+  padding: 5px;
+  border: solid var(--black);
+  border-width: 0 3px 3px 0;
+  transition: border-color 250ms ease-in;
+
+  &-left {
+    @extend .arrow;
+    transform: rotate(135deg);
+  }
+  &-right {
+    @extend .arrow;
+    transform: rotate(-45deg);
+  }
+
+  &-white {
+    border-color: var(--white);
+  }
+}
+
+button[class^="slider-"] {
+  @include flex(center, center);
+  @include size(4rem, 5rem);
+  background-color: var(--white);
+  cursor: pointer;
+  @include transition(background-color 250ms ease-in);
+  &:hover {
+    background-color: var(--primary-color);
+
+    & .arrow {
+      border-color: var(--white);
+    }
+  }
+}
+
+.slides {
+  position: relative;
+
+  &-wrapper {
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+
+  &-buttons {
+    @include flex(space-between, center);
+    @include Position(absolute, 50%, 0, 0, null, 10);
+    @include transform(translateY(-50%));
+  }
+}
+
+.slider {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  float: left;
+  opacity: 0;
+  margin-right: -100%;
+  @include transition(500ms ease-in-out);
+  @include transition-property(opacity);
+
+  &.active {
+    opacity: 1;
+    z-index: 2;
+  }
+}
+
+.slides-checked {
+  @include flex(center, center);
+  @include Position(absolute, null, 0, 0, 1rem, 9);
+  @include transform(translateY(-50%));
+}
+
+.circle {
+  cursor: pointer;
+  display: inline-block;
+  @include size(2rem, 2rem);
+  border-radius: 100%;
+  background: transparent;
+  border: 2px solid var(--white);
+  margin: 0 5px;
+  @include transition(background-color 350ms ease-in-out);
+  &.checked {
+    background-color: var(--white);
+  }
+}

@@ -1,0 +1,55 @@
+@use '../abstract' as *;
+
+.container {
+  max-width: 120rem;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 3%;
+  padding-right: 3%;
+
+  @include for-size(xl, null) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.container-sm {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.container-xl {
+  padding-top: calc(var(--space-lg) * 1.2);
+  padding-bottom: calc(var(--space-lg) * 1.2);
+
+  @include for-size(null, sm) {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+}
+
+.container-fluid {
+  @include background();
+  @include flex(center, center);
+  @include size(100vw, 100vh);
+  padding-top: var(--header-height);
+  background-color: var(--black);
+  position: relative;
+  &::before {
+    content: "";
+    @include Position(absolute, 0, 0, 0, 0, 1);
+    @include linear-gradient(180deg, #000000, #532623, #975420, #bb9900);
+    opacity: 0.2;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.wrapper {
+  padding-top: var(--space-lg);
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}

@@ -1,0 +1,51 @@
+@use '../abstract' as *;
+
+.media-portrait {
+  @include media-portrait();
+  &-sm {
+    @include for-size(sm, null) {
+      @include media-portrait();
+    }
+  }
+
+  &-lg {
+    @include for-size(lg, null) {
+      @include media-portrait();
+    }
+  }
+}
+
+.media-landscape {
+  @include media-landscape(16, 9);
+
+  &-125 {
+    width: 100%;
+    @include media-landscape(4, 5);
+  }
+
+  &-under-sm {
+    @include for-size(null, sm) {
+      @include media-landscape(16, 9);
+    }
+  }
+  &-under-lg {
+    @include for-size(null, lg) {
+      @include media-landscape(16, 9);
+    }
+  }
+}
+
+.media-high-light {
+  &::before {
+    content: "";
+    @include Position(absolute, 0, 25%, null, null, 100);
+    @include size(5%, 100%);
+    background-color: var(--white);
+  }
+}
+
+.media-skeleton {
+  display: block;
+  background-color: var(--color-border);
+  @include absolute-full(-1);
+}

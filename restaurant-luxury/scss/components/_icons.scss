@@ -1,0 +1,39 @@
+@use '../abstract' as *;
+
+:root {
+  --icon-xs: 16px;
+  --icon-sm: 18px;
+  --icon-base: 32px;
+  --icon-md: 64px;
+}
+
+.icon {
+  @include flex(center, center);
+  @include size(var(--icon-xs));
+  color: currentColor;
+}
+
+.icon {
+  $map-icon-sizes: (xs, sm, base, md);
+  @each $name in $map-icon-sizes {
+    &-#{$name} {
+      @include size(var(--icon-#{$name}));
+    }
+  }
+}
+
+.link-social {
+  color: var(--white);
+  margin: 0 var(--space-sm);
+
+  @include transition(transform 0.3s);
+
+  &:hover {
+    @include transform(translateY(-5px));
+  }
+}
+
+.icon-social {
+  @extend .icon;
+  @include size(var(--icon-base));
+}
