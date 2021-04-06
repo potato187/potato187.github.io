@@ -1,5 +1,3 @@
-# My Portfolio
-
 ## 1.Luxury Restaurant
 
 This project built on HTML/SCSS/JS and includes five pages (Home, Menu, Blogs, Contact, About).
@@ -8,7 +6,7 @@ This project built on HTML/SCSS/JS and includes five pages (Home, Menu, Blogs, C
 
 ### [code](https://github.com/potato187/potato187.github.io/tree/main/restaurant-luxury)
 
-## 2.Landing Page Bank.
+## 2.Landing Page Bank
 
 This project built on HTML/CSS/JS and has one pages and 5 sections (Header, Hero, Feature, Article, Footer). First for mobile devices and then for desktop computes.
 
@@ -16,7 +14,7 @@ This project built on HTML/CSS/JS and has one pages and 5 sections (Header, Hero
 
 ### [code](https://github.com/potato187/potato187.github.io/tree/main/easy-bank)
 
-## 3.Christmas-lading-page.
+## 3.Christmas lading page
 
 The landing page built on HTM/CSS/JS and has 1 page and feature light/dark mode.First for mobile devices and then for desktop computes.
 
@@ -24,7 +22,7 @@ The landing page built on HTM/CSS/JS and has 1 page and feature light/dark mode.
 
 ### [code](https://github.com/potato187/potato187.github.io/tree/main/christmas-lading-page)
 
-## 4.The Dolla Landing page.
+## 4.The Dolla Landing page
 
 The landing page build on ReactJs(React Hook).
 
