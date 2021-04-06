@@ -18,13 +18,11 @@ This project built on HTML/CSS/JS and has one pages and 5 sections (Header, Hero
 
 The landing page built on HTM/CSS/JS and has 1 page and feature light/dark mode.First for mobile devices and then for desktop computes.
 
-### [Live](https://potato187.github.io/christmas-lading-page)
+### [Live](https://potato187.github.io/christmas-landing-page)
 
-### [code](https://github.com/potato187/potato187.github.io/tree/main/christmas-lading-page)
+### [code](https://github.com/potato187/potato187.github.io/tree/main/christmas-landing-page)
 
 ## 4.The Dolla Landing page
-
-The landing page build on ReactJs(React Hook).
 
 ### [Live](https://codesandbox.io/s/the-dolla-website-5p9io)
 
