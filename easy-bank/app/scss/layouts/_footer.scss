@@ -1,0 +1,115 @@
+@use '../abstract' as *;
+
+.footer {
+  background-color: $dark-blue;
+  color: $white;
+  padding: 4rem;
+  text-align: center;
+  a {
+    color: $white;
+  }
+}
+
+.footer > .footer__wrapper {
+  position: relative;
+  @include breakpoint-up(large) {
+    @include grid(2fr repeat(2, 1fr) 3fr, 1fr auto);
+    justify-items: start;
+    grid-template-areas:
+      "logo  links1 links2 cta"
+      "social links1 links2 copy";
+  }
+}
+
+.footer > .footer__wrapper > .footer__logo {
+  display: block;
+  img {
+    filter: brightness(0) invert(1);
+  }
+
+  @include breakpoint-up(large) {
+    grid-area: logo;
+  }
+}
+
+.footer > .footer__wrapper > .footer__social {
+  @include breakpoint-up(medium) {
+    margin: 3rem 0;
+  }
+  @include breakpoint-up(large) {
+    grid-area: social;
+    align-self: end;
+    margin-bottom: 0;
+  }
+}
+
+.footer > .footer__wrapper > .footer__social > .footer__icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem;
+
+  svg path {
+    transition: fill 150ms ease-out;
+  }
+
+  &:hover svg path {
+    fill: $lime-green;
+  }
+}
+
+.footer > .footer__wrapper > .footer__links {
+  @include flex(flex-start, center, nowrap, column);
+  @include breakpoint-up(large) {
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  &.col-1 {
+    @include breakpoint-up(large) {
+      grid-area: links1;
+    }
+  }
+
+  &.col-2 {
+    margin-bottom: 3rem;
+    @include breakpoint-up(large) {
+      margin-bottom: 0;
+      grid-area: links2;
+    }
+  }
+}
+.footer > .footer__wrapper > .footer__links > a {
+  font-size: 15px;
+  line-height: 2.25;
+  transition: color 150ms ease-in-out;
+
+  &:hover {
+    color: $lime-green;
+  }
+
+  @include breakpoint-up(medium) {
+    line-height: 2.25;
+  }
+}
+
+.footer > .footer__wrapper > .footer__cta {
+  .btn {
+    margin-bottom: 3rem;
+  }
+  @include breakpoint-up(large) {
+    justify-self: flex-end;
+    grid-area: cta;
+  }
+}
+
+.footer > .footer__wrapper > .footer__copyright {
+  font-size: 13px;
+  color: $grayish-blue;
+  user-select: none;
+  @include breakpoint-up(large) {
+    grid-area: copy;
+    justify-self: end;
+    align-self: end;
+  }
+}

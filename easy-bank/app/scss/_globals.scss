@@ -1,0 +1,174 @@
+@use './abstract' as *;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Public Sans", sans-serif;
+  line-height: 1.3;
+  font-weight: 300;
+  background-color: $very-light-gray;
+  color: $grayish-blue;
+  position: relative;
+
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
+  color: $dark-blue;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: $font-large;
+  margin-bottom: $spacing;
+  @include breakpoint-up(large) {
+    font-size: $font-x-large;
+    margin-bottom: $spacing-large;
+  }
+}
+
+h1 {
+  font-size: $font-x-large;
+  letter-spacing: 2.5px;
+  margin-bottom: $spacing;
+  @include breakpoint-up(large) {
+    font-size: $font-super;
+  }
+}
+
+h3 {
+  font-size: $font-medium;
+  margin-bottom: $spacing-small;
+  @include breakpoint-up(large) {
+    font-size: 2.4rem;
+    margin-bottom: $spacing-small;
+  }
+}
+
+p {
+  font-size: $font-small;
+  line-height: 1.5;
+  @include breakpoint-up(large) {
+    font-size: $font-default;
+  }
+}
+
+// Flex
+.flex {
+  display: flex;
+
+  &-justify-center {
+    justify-content: center;
+  }
+
+  &-justify-between {
+    justify-content: space-between;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+}
+
+.btn {
+  display: inline-block;
+  border-radius: 50px;
+  padding: 1.4rem 3.5rem;
+  font-weight: 400;
+  font-size: $font-small;
+  color: $white;
+  background-image: $linear-gradient-primary;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.25);
+    @include Position(absolute, 0, 0, 0, 0, 1);
+    opacity: 0;
+    @include transition(opacity 0.15s ease-in-out);
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+
+  @include breakpoint-up(medium) {
+    font-size: $font-small;
+  }
+
+  @include breakpoint-up(large) {
+    font-size: $font-medium;
+  }
+}
+
+.hide-for-mobile {
+  @include breakpoint-down(medium) {
+    display: none !important;
+  }
+}
+
+.hide-for-desktop {
+  @include breakpoint-up(large) {
+    display: none !important;
+  }
+}
+.overlay {
+  @include Position(fixed, 0, 0, 0, 0, 1);
+  height: 1px;
+  background-color: $dark-blue;
+  background-image: linear-gradient(to bottom, $dark-blue 60%, $white 100%);
+  @include hidden();
+  @include transition(all 0.35s ease-in-out);
+}
+
+header.open + .overlay {
+  @include visible(0.3);
+  height: 100vh;
+}
+
+.container {
+  $x: 3.6rem;
+  $y: 7rem;
+
+  max-width: 110rem;
+  margin: 0 auto;
+
+  &--pall {
+    padding: $y $x;
+    @include breakpoint-up(large) {
+      padding: 9.6rem $x;
+    }
+  }
+  &--px {
+    padding-left: $x;
+    padding-right: $x;
+  }
+}
+
+.logo {
+  width: 14.1rem;
+  height: 2.2rem;
+}

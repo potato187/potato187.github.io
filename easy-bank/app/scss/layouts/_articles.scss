@@ -1,0 +1,57 @@
+@use '../abstract' as *;
+
+.articles {
+  background-color: $very-light-gray;
+}
+
+.articles > .articles__wrapper > .grid {
+  @include grid(1fr, null, 3rem);
+  @include breakpoint-up(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint-up(large) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.articles > .articles__wrapper > .grid > .grid__item {
+  display: block;
+  background-color: $white;
+  @include box-shadow(0px 3px 12px rgba(0, 0, 0, 0.15));
+  border-radius: 0.5rem;
+  overflow: hidden;
+  @include transition(transform 0.35s ease-in-out);
+
+  &:hover {
+    @include transform(scale(1.01));
+  }
+}
+
+.articles > .articles__wrapper > .grid > .grid__item > .grid__image {
+  width: 100%;
+  height: 20rem;
+  background-size: cover;
+  background-position: center center;
+}
+
+.articles > .articles__wrapper > .grid .grid__text {
+  padding: 3rem 3rem 4rem 3rem;
+  color: $grayish-blue;
+  @include breakpoint-up(medium) {
+    padding: 3rem 2.5rem;
+  }
+}
+
+.articles > .articles__wrapper > .grid > .grid__item > .grid__text > .grid__author {
+  font-size: 1rem;
+}
+
+.articles > .articles__wrapper > .grid > .grid__item > .grid__text > .grid__title {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  margin: 0.8rem 0 1.6rem 0;
+}
+
+.articles > .articles__wrapper > .grid > .grid__item > .grid__text > .grid__description {
+  font-size: 1.3rem;
+}

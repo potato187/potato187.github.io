@@ -1,0 +1,42 @@
+@use '../abstract' as *;
+
+.feature {
+  background-color: $light-grayish-blue;
+  text-align: center;
+
+  @include breakpoint-up(large) {
+    text-align: left;
+  }
+}
+
+.feature > .feature__wrapper > .feature__intro {
+  @include breakpoint-up(large) {
+    max-width: 65%;
+    margin-bottom: 6rem;
+  }
+}
+
+.feature > .feature__wrapper > .feature__flex {
+  @include breakpoint-up(medium) {
+    @include flex(flex-start, stretch, wrap);
+  }
+}
+
+.feature > .feature__wrapper > .feature__flex > .feature__item {
+  padding: 1.5rem;
+  @include breakpoint-up(large) {
+    flex: 1;
+    @include flex-basic(1);
+  }
+
+  @include breakpoint-up(medium) {
+    @include flex-basic(0 0 50%);
+  }
+}
+.feature > .feature__wrapper > .feature__flex > .feature__item > .feature__icon {
+  margin-bottom: 3rem;
+
+  @include breakpoint-up(large) {
+    margin-bottom: 4.4rem;
+  }
+}

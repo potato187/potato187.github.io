@@ -1,0 +1,66 @@
+@use '../abstract' as *;
+.hero {
+  background-color: $very-light-gray;
+}
+
+.hero .hero__wrapper {
+  @include breakpoint-up(large) {
+    @include flex(flex-start, center);
+  }
+}
+
+.hero .hero__wrapper .hero__image {
+  position: relative;
+  min-height: 28rem;
+
+  @include background-image("/easy-bank/app/images/bg-intro-mobile.svg");
+  @include breakpoint-up(medium) {
+    min-height: 40rem;
+    background-position: center 70%;
+  }
+
+  @include breakpoint-up(large) {
+    @include flex-basic(3);
+    @include flex-order(2);
+    height: 65.5rem;
+    background: none;
+  }
+}
+
+.hero .hero__wrapper .hero__image::before {
+  @include breakpoint-up(large) {
+    content: "";
+    position: absolute;
+    @include size(150%, 100%);
+    @include background-image("/easy-bank/app/images/bg-intro-desktop.svg", 0%, 83%, 126%);
+  }
+}
+
+.hero .hero__wrapper .hero__image::after {
+  content: "";
+  position: absolute;
+  @include size(100%);
+  @include background-image("/easy-bank/app/images/image-mockups.png", center, bottom);
+  @include breakpoint-up(medium) {
+    background-size: 51%;
+  }
+
+  @include breakpoint-up(large) {
+    @include size(120%, 122%);
+    background-size: 94%;
+    background-position: center 150%;
+    left: 22%;
+  }
+}
+
+.hero .hero__wrapper .hero__text {
+  text-align: center;
+  @include breakpoint-up(large) {
+    @include flex-basic(2);
+    @include flex-order(1);
+    text-align: left;
+  }
+  & p {
+    margin-bottom: $spacing-large;
+  }
+}

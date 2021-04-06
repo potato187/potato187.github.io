@@ -1,0 +1,24 @@
+@use '../abstract' as *;
+
+@include keyframe(overlay-fade-in) {
+  from {
+    height: 0vh;
+    opacity: 0;
+  }
+  to {
+    height: 100vh;
+    opacity: 1;
+  }
+}
+@include keyframe(has-fade) {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+}

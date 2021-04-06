@@ -1,0 +1,127 @@
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+$breakpoints-up: (
+  "medium": "640px",
+  "large": "1024px",
+  "x-large": "1440px",
+);
+
+$breakpoints-down: (
+  "small": "639px",
+  "medium": "1023px",
+  "larger": "1399px",
+);
+
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+@mixin Position($position: null, $top: null, $right: null, $bottom: null, $left: null, $z: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z;
+}
+
+@mixin flex($justify: flex-start, $align: stretch, $wrap: nowrap, $direction: row) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+  -webkit-box-align: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-order($number: null) {
+  -webkit-box-ordinal-group: $number;
+  -ms-flex-order: $number;
+  order: $number;
+}
+
+@mixin flex-basic($args...) {
+  -webkit-box-flex: $args;
+  -ms-flex: $args;
+  flex: $args;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transition-property($args...) {
+  -webkit-transition-property: $args;
+  -o-transition-property: $args;
+  transition-property: $args;
+}
+
+@mixin transform-origin($args...) {
+  -webkit-transform-origin: $args;
+  -ms-transform-origin: $args;
+  transform-origin: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -ms-transform: $args;
+  transform: $args;
+}
+
+@mixin keyframe($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin grid($columns: null, $rows: null, $gutter: null) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  grid-gap: $gutter;
+}
+
+@mixin box-shadow($args...) {
+  box-shadow: $args;
+}
+
+@mixin background-image($url, $position1: center, $position2: $position1, $size: cover, $repeat: no-repeat) {
+  background: url(#{$url}) $repeat;
+  background-position: $position1 $position2;
+  background-size: $size;
+}
+
+@mixin hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin visible($opacity: 1) {
+  visibility: visible;
+  opacity: $opacity;
+}

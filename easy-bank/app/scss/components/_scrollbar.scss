@@ -1,0 +1,49 @@
+@use '../abstract' as *;
+
+#scroll-arrow {
+  display: block;
+  @include size(3rem);
+  @include transform(rotate(-45deg));
+  position: absolute;
+  bottom: 5rem;
+  right: -1.5rem;
+  z-index: 99;
+
+  @include breakpoint-up(large) {
+    bottom: 3rem;
+    right: 7rem;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    @include size(100%);
+    border: solid #fafafa;
+    border-width: 0.3rem 0.3rem 0 0;
+    @include transition(border-color 0.3s ease);
+    @include transform-origin(100% 0);
+  }
+  &::after {
+    content: "";
+    float: left;
+    margin-top: -91%;
+    position: relative;
+    @include size(100%);
+    border: solid #fafafa;
+    border-width: 0 0.3rem 0 0;
+    @include transition(0.3s ease);
+    @include transition-property(border-color, transform);
+    @include transform-origin(100% 0);
+  }
+
+  &:hover {
+    &::before {
+      border-color: orange;
+    }
+    &::after {
+      @include transform(rotate(45deg));
+      border-color: orange;
+      height: 120%;
+    }
+  }
+}
